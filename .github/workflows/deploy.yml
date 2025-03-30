@@ -11,22 +11,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js v22
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22  # 版本已修复
+          node-version: 22
 
       - name: Install dependencies
         run: npm install
 
       - name: Build VitePress
-        run: |  # 权限和路径已修复
+        run: |
           chmod +x ./node_modules/.bin/vitepress
           npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.DEPLOY_TOKEN }}  # 使用 PAT
           publish_dir: docs/.vitepress/dist
           keep_files: false
+          force_orphan: true  # 强制覆盖历史提交（可选）
