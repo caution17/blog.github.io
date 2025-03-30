@@ -1,3 +1,4 @@
+<!--
 # html-void-elements
 
 [![Build][build-badge]][build]
@@ -164,3 +165,5 @@ See [How to Contribute to Open Source][contribute].
 [typescript]: https://www.typescriptlang.org
 
 [contribute]: https://opensource.guide/how-to-contribute/
+
+!-->
