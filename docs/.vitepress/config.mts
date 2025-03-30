@@ -10,6 +10,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Recording', link: '/methodology' }
     ],
+    
 
     sidebar: [
       { 
@@ -30,5 +31,6 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/caution17' }
     ]
-  }
+  },
+  outDir: './dist'
 })
