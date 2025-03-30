@@ -136,6 +136,7 @@ See [How to Contribute to Open Source][contribute].
 
 <!-- Definition -->
 
+<!--
 [build-badge]: https://github.com/wooorm/html-void-elements/workflows/main/badge.svg
 
 [build]: https://github.com/wooorm/html-void-elements/actions
