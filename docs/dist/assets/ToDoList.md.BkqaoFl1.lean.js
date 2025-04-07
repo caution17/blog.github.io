@@ -1,0 +1,1 @@
+import{_ as e,c as t,o,ae as r}from"./chunks/framework.BHrE6nLq.js";const h=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"ToDoList.md","filePath":"ToDoList.md"}'),s={name:"ToDoList.md"};function i(n,a,p,_,d,l){return o(),t("div",null,a[0]||(a[0]=[r("",10)]))}const m=e(s,[["render",i]]);export{h as __pageData,m as default};

@@ -1,0 +1,1 @@
+import{_ as r,c as o,o as n,ae as a}from"./chunks/framework.BHrE6nLq.js";const c=JSON.parse('{"title":"使用资料","description":"","frontmatter":{},"headers":[],"relativePath":"Politic.md","filePath":"Politic.md"}'),s={name:"Politic.md"};function e(p,t,g,i,l,h){return n(),o("div",null,t[0]||(t[0]=[a("",31)]))}const _=r(s,[["render",e]]);export{c as __pageData,_ as default};
