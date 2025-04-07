@@ -1,9 +1,52 @@
+# name: Deploy VitePress Site
+
+# on:
+#   push:
+#     branches: [ "main" ]
+#   workflow_dispatch:
+
+# permissions:
+#   contents: read
+#   pages: write
+#   id-token: write
+
+# concurrency:
+#   group: "pages"
+#   cancel-in-progress: false
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: Setup Node.js  # 新增步骤
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 22
+
+#       - name: Install dependencies  # 替换为 npm
+#         run: npm install
+
+#       - name: Build VitePress  # 替换为 VitePress 构建
+#         run: |
+#           chmod +x ./node_modules/.bin/vitepress
+#           npm run build
+
+#       - name: Deploy to GitHub Pages  # 替换部署工具
+#         uses: peaceiris/actions-gh-pages@v3
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           publish_dir: ./docs/.vitepress/dist
+#           keep_files: false
+
 name: Deploy VitePress Site
 
 on:
   push:
-    branches: [ "main" ]
-  workflow_dispatch:
+    branches: [main]
+  workflow_dispatch:  # 保留手动触发功能
 
 permissions:
   contents: read
@@ -12,31 +55,31 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: false  # 避免并发部署冲突
 
 jobs:
-  build:
+  deploy:  # 修改 job 名称为 deploy（与原文件一致）
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js  # 新增步骤
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - name: Install dependencies  # 替换为 npm
+      - name: Install dependencies
         run: npm install
 
-      - name: Build VitePress  # 替换为 VitePress 构建
+      - name: Build VitePress
         run: |
           chmod +x ./node_modules/.bin/vitepress
           npm run build
 
-      - name: Deploy to GitHub Pages  # 替换部署工具
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # 使用默认 Token
           publish_dir: ./docs/.vitepress/dist
           keep_files: false
