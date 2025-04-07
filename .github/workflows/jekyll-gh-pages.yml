@@ -3,7 +3,7 @@ name: Deploy VitePress Site
 on:
   push:
     branches: [main]
-  workflow_dispatch:  # 保留手动触发功能
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -12,10 +12,10 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false  # 避免并发部署冲突
+  cancel-in-progress: false
 
 jobs:
-  deploy:  # 修改 job 名称为 deploy（与原文件一致）
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -25,6 +25,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      - name: Cache node_modules  # 新增缓存
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
 
       - name: Install dependencies
         run: npm install
@@ -37,6 +43,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # 使用默认 Token
-          publish_dir: ./docs/.vitepress/dist
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/.vitepress/dist  # 路径修正
           keep_files: false
